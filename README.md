@@ -7,6 +7,7 @@
 * [Ejecución](#Ejecución)
 * [Código](#Código)
 * [Tests](#Tests)
+* [Análisis](#Análisis)
 
 
 ### Ejecución 💻
@@ -52,14 +53,19 @@ En estos se declaran y definen la **struct** `world`, y las siguinetes funciones
 
 ### Tests
 
-#### Test1
+Al *testear* el programa con los *tests* de los niveles *Easy*, *Medium* y *Hard* se obtuvieron resultados **correctos** de manera **eficiente**. Además, **_Valgrind_ indicó que el programa no tiene errores de memoria**, y que **no hay _memory leaks_**. El programa fue desarrollado y ejecutado con un procesador
+Intel® Core i5 2da generación, 4GB de RAM, GPU NVIDIA® GEFORCE 2GB, utilizando el sistema operativo Kali Linux. 
+
+#### Compare
+
+Al ejecutar los tests obtenidos de la carpeta `./Compare`, utilizando el comando `time` de **bash**, se obtiene para cada test los siguientes resultados:
 
 | Test   | Versión           | user     | system  | cpu    | total  |
 |--------| :---------------: |:--------:| :------:|:------:|-------:|
 | Test1  | Pyhon3            | 1.89s    | 0.06s   | 97%    | 1.995  |
-|        | C                 | 0.32s    | 0.11s.  | 79%    | 0.32   |
-|        | **Differencia**   | `1.57s`  | `0.05s` | `18%`  |`1.675` |
-|        | **(porcentual)**  | `-83.06%`| `+83.3%`|`-18.5%`|`-84.0%`|
+|        | C                 | 0.32s    | 0.11s.  | 79%    | 0.545  |
+|        | **Differencia**   | `1.57s`  | `0.05s` | `18%`  |`1.450` |
+|        | **(porcentual)**  | `-83.06%`| `+83.3%`|`-18.5%`|`-72.7%`|
 | Test2  | Pyhon3            | 3.42s    | 0.12s   | 98%    | 3.581  |
 |        | C                 | 0.65s    | 0.18s.  | 76%    | 1.100  | 
 |        | **Differencia**   | `2.77s`  | `0.06s` | `22%`  |`2.481` |
@@ -80,7 +86,15 @@ En estos se declaran y definen la **struct** `world`, y las siguinetes funciones
 |        | C                 | 2.10s    | 0.45s.  | 78%    | 3.240  |
 |        | **Differencia**   | `7.64s`  | `0.16s` | `18%`  |`7.161` |
 |        | **(porcentual)**  | `-78.43%`| `+55.2%`|`-18.8%`|`-68.8%`|
-|        |                   |          |         |        |        |
-|        |                   |          |         |        |        |
-|        | **Differencia**   | `79.04%` | `+59.8%`|`-21.2%`|`-72.7%`|
+| Avg.   |                   |          |         |        |        |
+|        | **Differencia**   | `79.04%` | `+59.8%`|`-21.2%`|`-70.8%`|
 
+Como se puede ver en la tabla, el tiepo de ejecución del programa `user` esen promedio un **79.04% menor en C**, en relación a ejecutar el mismo test
+en **Python3**. Además, utiliza un **21.2% menos de CPU**, y el valor total entregado por `time` es también un **70.8% menor en C**. Con esto podemos decir, que
+evidentemente **C es más rápido que Python3**, ya que ejecuta la misma tarea en aproximadamente **1/5 del tiempo**. A pesar de esto, en la columna **system**, se
+puede ver los tiempos para **C son 59.8% mayores que para Python3**. Esto quiere decir la cantidad de tiempo que la CPU (s) pasó realizando llamadas del sistema para el kernel en nombre del programa es mayor para **C** que para **Python3** (Al menos en la configuración en la cual los tests fueron ejecutados).
+
+### Análisis
+
+* La complegidad de búsqueda de un paciente 0 es O(1)
+* Si se cambiase la estructura del arbol de personas, según se propone en el enunciado, pasando de utilizar una lista ligada a utilizar un arreglo, donde además del id, se conoce el índice en el cual se encuentra un nodo
