@@ -4,8 +4,8 @@
 
 ## Contenidos
 
-* [Ejecución](#Ejecucion)
-* [Código](#Codigo)
+* [Ejecución](#Ejecucion-)
+* [Código](#Codigo-)
 * [Tests](#Tests)
 * [Análisis](#Analisis)
 
