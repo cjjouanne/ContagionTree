@@ -4,6 +4,9 @@
 #include <stdbool.h>
 #include <math.h>
 
+#include "world.h"
+#include "person.h"
+
 
 
 /* Retorna true si ambos strings son iguales */
@@ -50,7 +53,7 @@ int main(int argc, char **argv)
   fscanf(input_file, "%d", &n_countries);
 
   /* [Por implementar] Generamos nuestro mundo */
-
+  World *earth = god_create_world(n_countries);
   /* Leemos la cantidad de regiones de cada país */
   int n_regions;
   for (int cty = 0; cty < n_countries; cty++)
@@ -58,6 +61,7 @@ int main(int argc, char **argv)
     fscanf(input_file, "%d", &n_regions);
     
     /* [Por implementar] Poblamos el país con regiones */
+    create_region(earth, cty, n_regions);
     
   }
 
@@ -98,15 +102,17 @@ int main(int argc, char **argv)
       fscanf(input_file, "%d", &depth);
       printf("ADD_CONTACTS %d %d %d ", country_id, region_id, depth);
       /* Obtenemos la ruta desde el archivo*/
+      Person *curr = earth -> countries[country_id][region_id];
       for (int r = 0; r < depth; r++)
       {
         fscanf(input_file, "%d", &contact_id);
         printf("%d ", contact_id);
+        curr = search_contact(curr, contact_id);
       }
       /* Obtenemos el numero de contactos */
       fscanf(input_file, "%d", &n_contacts);
       printf("%d\n", n_contacts);
-
+      add_contact(earth, country_id, region_id, curr, n_contacts);
     } 
     else if (string_equals(command, "POSITIVE"))
     {
@@ -114,53 +120,64 @@ int main(int argc, char **argv)
       fscanf(input_file, "%d", &depth);
       printf("POSITIVE %d %d %d ", country_id, region_id, depth);
       /* Obtenemos la ruta desde el archivo*/
+      Person *curr = earth -> countries[country_id][region_id];
       for (int r = 0; r < depth; r++)
       {
         fscanf(input_file, "%d", &contact_id);
         printf("%d ", contact_id);
+        curr = search_contact(curr, contact_id);
       }
+      positive_exam(curr);
       printf("\n");
 
     } 
     else if (string_equals(command, "NEGATIVE"))
     {
-      
+
       fscanf(input_file, "%d", &depth);
       printf("NEGATIVE %d %d %d ", country_id, region_id, depth);
+      Person *curr = earth -> countries[country_id][region_id];
       /* Obtenemos la ruta desde el archivo*/
       for (int r = 0; r < depth; r++)
       {
         fscanf(input_file, "%d", &contact_id);
         printf("%d ", contact_id);
+        curr = search_contact(curr, contact_id);
       }
+      person_destroy(curr);
       printf("\n");
 
     } 
     else if (string_equals(command, "RECOVERED"))
     {
-      
+
       fscanf(input_file, "%d", &depth);
       printf("RECOVERED %d %d %d ", country_id, region_id, depth);
+      Person *curr = earth -> countries[country_id][region_id];
       /* Obtenemos la ruta desde el archivo*/
       for (int r = 0; r < depth; r++)
       {
         fscanf(input_file, "%d", &contact_id);
         printf("%d ", contact_id);
+        curr = search_contact(curr, contact_id);
       }
       printf("\n");
 
       /* [Por implementar] */
-
+      curr -> state = 3;
     } 
     else if (string_equals(command, "CORRECT"))
     {
       fscanf(input_file, "%d", &depth);
-      printf("RECOVERED %d %d %d ", country_id, region_id, depth);
+      printf("CORRECT %d %d %d ", country_id, region_id, depth);
+      Person *curr1 = earth -> countries[country_id][region_id];
+      Person *curr2 = earth -> countries[country_id][region_id];
       /* Obtenemos la primera ruta desde el archivo*/
       for (int r = 0; r < depth; r++)
       {
         fscanf(input_file, "%d", &contact_id);
         printf("%d ", contact_id);
+        curr1 = search_contact(curr1, contact_id);
       }
       /* Obtenemos la segunda ruta desde el archivo*/
       fscanf(input_file, "%d", &depth);
@@ -169,23 +186,27 @@ int main(int argc, char **argv)
       {
         fscanf(input_file, "%d", &contact_id);
         printf("%d ", contact_id);
+        curr2 = search_contact(curr2, contact_id);
       }
       printf("\n");
 
       /* [Por implementar] */
+      correct(curr1, curr2);
     
     } 
     else if (string_equals(command, "INFORM"))
     {
       fprintf(output_file, "INFORM %d %d\n", country_id, region_id);
       /* [Por implementar] */
-      
+      Person *person = earth -> countries[country_id][region_id];
+      recursive_inform(person, 0, output_file);
     } 
     else if (string_equals(command, "STATISTICS"))
     {
       fprintf(output_file, "STATISTICS %d %d\n", country_id, region_id);
       /* [Por implementar] */
-
+      Person *person = earth -> countries[country_id][region_id];
+      recursive_statistics(person, output_file);
     }
 
   }
@@ -194,5 +215,8 @@ int main(int argc, char **argv)
 
   fclose(input_file);
   fclose(output_file);
+
+  thanos(earth);
+
   return 0;
 }
