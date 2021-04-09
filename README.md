@@ -4,18 +4,18 @@
 
 ## Contenidos
 
-* [Ejecución](#Ejecución)
-* [Código](#Código)
+* [Ejecución](#Ejecucion)
+* [Código](#Codigo)
 * [Tests](#Tests)
-* [Análisis](#Análisis)
+* [Análisis](#Analisis)
 
 
-### Ejecución 💻
+### Ejecucion 💻
 La base de python se ejecuta con ` python3 ./python/main.py tests/test.txt out.txt`, mientras que
 el programa en c se compila con `make` y se ejecuta con ` ./kevin-21 tests/test.txt out.txt`. Compila sin errores, y Valgrind 
 indica que no hay errores ni pérdida de memoria.
 
-### Código 📂
+### Codigo 📂
 
 * [src/kevin-21](https://github.com/IIC2133-PUC/T0-2021-1-cjjouanne/tree/master/src/kevin-21)
   * [main.c](https://github.com/IIC2133-PUC/T0-2021-1-cjjouanne/blob/master/src/kevin-21/main.c)
@@ -94,7 +94,7 @@ en **Python3**. Además, utiliza un **21.2% menos de CPU**, y el valor total ent
 evidentemente **C es más rápido que Python3**, ya que ejecuta la misma tarea en aproximadamente **1/5 del tiempo**. A pesar de esto, en la columna **system**, se
 puede ver los tiempos para **C son 59.8% mayores que para Python3**. Esto quiere decir la cantidad de tiempo que la CPU (s) pasó realizando llamadas del sistema para el kernel en nombre del programa es mayor para **C** que para **Python3** (Al menos en la configuración en la cual los tests fueron ejecutados).
 
-### Análisis
+### Analisis
 
 * La complegidad de búsqueda de un paciente 0 es O(1)
 * Si se cambiase la estructura del arbol de personas, según se propone en el enunciado, pasando de utilizar una lista ligada a utilizar un arreglo, donde además del id, se conoce el índice en el cual se encuentra un nodo
