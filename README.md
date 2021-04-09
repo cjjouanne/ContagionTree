@@ -4,9 +4,9 @@
 
 ## Contenidos
 
-* [Ejecución]()
-* [Código]()
-* [Tests]()
+* [Ejecución](#Ejecución)
+* [Código](#Código)
+* [Tests](#Tests)
 
 
 ### Ejecución 💻
@@ -16,7 +16,7 @@ indica que no hay errores ni pérdida de memoria.
 
 ### Código 📂
 
-* src/kevin-21
+* [src/kevin-21](https://github.com/IIC2133-PUC/T0-2021-1-cjjouanne/tree/master/src/kevin-21)
   * [main.c](https://github.com/IIC2133-PUC/T0-2021-1-cjjouanne/blob/master/src/kevin-21/main.c)
   * [person.c](https://github.com/IIC2133-PUC/T0-2021-1-cjjouanne/blob/master/src/kevin-21/person.c)
   * [person.h](https://github.com/IIC2133-PUC/T0-2021-1-cjjouanne/blob/master/src/kevin-21/person.h)
@@ -53,67 +53,49 @@ En estos se declaran y definen la **struct** `world`, y las siguinetes funciones
 ### Tests
 
 #### Test1
-C
-```
-./kevin-21 ./tests/Compare/test_1.txt ouput.txt  0.32s user 0.11s system 79% cpu 0.545 total
-```
 
-Python
-```
-python3 ./python/main.py ./tests/Compare/test_1.txt ouput.txt  1.89s user 0.06s system 97% cpu 1.995 total
-```
+| Versión           | user    | system  | cpu   | total |
+| ----------------- |:-------:| :------:|:-----:|------:|
+| Pyhon3            | 1.89s   | 0.06s   | 97%   | 1.995 |
+| C                 | 0.32s   | 0.11s.  | 79%   | 0.32  |
+| **Differencia**   | 1.57s   | 0.05s   | 18%   | 1.675 |
 
 #### Test2
-C
-```
-./kevin-21 ./tests/Compare/test_2.txt ouput.txt  0.65s user 0.18s system 76% cpu 1.100 total
-```
 
-Python
-```
-python3 ./python/main.py ./tests/Compare/test_2.txt ouput.txt  3.42s user 0.12s system 98% cpu 3.581 total
-```
+| Versión           | user    | system  | cpu   | total |
+| ----------------- |:-------:| :------:|:-----:|------:|
+| Pyhon3            | 3.42s   | 0.12s   | 98%   | 3.581 |
+| C                 | 0.65s   | 0.18s.  | 76%   | 1.100 |
+| **Differencia**   | 2.77s   | 0.06s   | 22%   | 2.481 |
 
 #### Test3
-C
-```
-./kevin-21 ./tests/Compare/test_3.txt ouput.txt  1.09s user 0.29s system 73% cpu 1.888 total
-```
 
-Python
-```
-python3 ./python/main.py ./tests/Compare/test_3.txt ouput.txt  4.71s user 0.17s system 96% cpu 5.038 total
-```
+| Versión           | user    | system  | cpu   | total |
+| ----------------- |:-------:| :------:|:-----:|------:|
+| Pyhon3            | 4.71s   | 0.17s   | 96%   | 5.038 |
+| C                 | 1.09s   | 0.29s.  | 73%   | 1.888 |
+| **Differencia**   | 3.62s   | 0.12s   | 23%   | 4.150 |
 
 #### Test4
-C
-```
-./kevin-21 ./tests/Compare/test_4.txt ouput.txt  1.54s user 0.36s system 75% cpu 2.508 total
-```
 
-Python
-```
-python3 ./python/main.py ./tests/Compare/test_4.txt ouput.txt  6.34s user 0.24s system 96% cpu 6.834 total
-```
+| Versión           | user    | system  | cpu   | total |
+| ----------------- |:-------:| :------:|:-----:|------:|
+| Pyhon3            | 6.34s   | 0.24s   | 96%   | 6.834 |
+| C                 | 1.54s   | 0.36s.  | 75%   | 2.508 |
+| **Differencia**   | 4.80s   | 0.12s   | 21%   | 4.326 |
 
 #### Test5
-C
-```
-./kevin-21 ./tests/Compare/test_5.txt ouput.txt  1.71s user 0.42s system 77% cpu 2.732 total
-```
 
-Python
-```
-python3 ./python/main.py ./tests/Compare/test_5.txt ouput.txt  8.24s user 0.28s system 98% cpu 8.673 total
-```
+| Versión           | user    | system  | cpu   | total |
+| ----------------- |:-------:| :------:|:-----:|------:|
+| Pyhon3            | 8.24s   | 0.28s   | 98%   | 8.673 |
+| C                 | 1.71s   | 0.42s.  | 77%   | 2.732 |
+| **Differencia**   | 6.53s   | 0.14s   | 21%   | 5.941 |
 
 #### Test6
-C
-```
-./kevin-21 ./tests/Compare/test_6.txt ouput.txt  2.10s user 0.45s system 78% cpu 3.240 total
-```
 
-Python
-```
-python3 ./python/main.py ./tests/Compare/test_6.txt ouput.txt  9.74s user 0.29s system 96% cpu 10.401 total
-```
+| Versión           | user    | system  | cpu   | total |
+| ----------------- |:-------:| :------:|:-----:|------:|
+| Pyhon3            | 9.74s   | 0.29s   | 96%   | 10.401|
+| C                 | 2.10s   | 0.45s.  | 78%   | 3.240 |
+| **Differencia**   | 7.64s   | 0.16s   | 18%   | 7.161 |
