@@ -50,6 +50,21 @@ En estos se declaran y definen la **struct** `world`, y las siguinetes funciones
 * `void add_contact(World *world, int country, int region, Person *person, int close_contacts)`: añade `close_contacts` hijos a `person`.
 * `void thanos(World *world)`: destruye el mundo, y libera su memoria.
 
+### Analisis
+
+> ⚠️ No se nada de complejidad, ni cálculos de complejidad. Puede estar todo malo.
+
+A continuación, se muestra la complejidad teórica de cada acción considerando el peor caso:
+* La complejidad de búsqueda de un paciente 0 es _O(1)_, muentras que en el peor de los casos es de _O(n)_ donde _n_ es el número de nodos del árbol.
+  * **ADD_CONTACTS**: encontrar la persona a la cual se le añade un contacto tiene complejidad hasta _O(n)_. Añadir un elemento al final de una lista ligada tiene complejidad _O(1)_, al iterar sobre estacción, tenemos una complejidad de _O(n)_, por lo tanto, la complejidad total es _O(n)_.
+  * **RECOVERD**: en el peor de los casos es _O(n)_, ya que la busqueda es _O(n)_ y el cambio de estado es _O(1)_.
+  * **POSITIVE**: en el pero de los casos, la búsqueda es _O(n)_, el cambio de estado es _O(1)_, y el cambio de estado de los hijos es tambien hasta _O(n)_, por lo tanto tiene cmplejidad hasta _O(n)_.
+  * **NEGATIVE**: en el pero de los casos, la búsqueda es _O(n)_, y borrar este nodo y sus hijos correspondientes tiene una complejidad de _O(n)_, por lo tanto tiene cmplejidad hasta _O(n)_.
+  * **CORRECT**: cada búsqueda tiene una complejidad de _O(n)_, el cambio de padre de cada nodo tiene complejidad _O(1)_, por lo que la operación total, tiene complejidad hasta _O(n)_.
+
+* **INFORM**: tiene siempre una complejidad de _O(n)_ pues siempre debe recorrer el arbol entero.
+* **STATISTICS**: tiene siempre una complejidad de _O(n)_ pues siempre debe recorrer el arbol entero.
+* Si se cambiase la estructura del arbol de personas, según se propone en el enunciado, pasando de utilizar una lista ligada a utilizar un arreglo, donde además del id, se conoce el índice en el cual se encuentra un nodo, se simplificaría la búsqueda ya que la búsqueda en un arreglo ordenado es _O(1)_ (_O(log n)_ si no supieramos el índice), mientras que en una lista ligada es _O(n)_. Almismo tiempo, las operaciones de _Insertar_ y _Eliminar_ elementos en la mitad se vuelven mas "costosas" ya que hay que volver a indexar todos los elementos posteriores a la posición en la que se inserta/elimina el elemento, dejando una complejidad de _O(n)_, mientras que en una lista ligada, estas operaciones tienen una complejidad de _O(1)_.
 
 ### Tests
 
@@ -94,7 +109,3 @@ en **Python3**. Además, utiliza un **21.2% menos de CPU**, y el valor total ent
 evidentemente **C es más rápido que Python3**, ya que ejecuta la misma tarea en aproximadamente **1/5 del tiempo**. A pesar de esto, en la columna **system**, se
 puede ver los tiempos para **C son 59.8% mayores que para Python3**. Esto quiere decir la cantidad de tiempo que la CPU (s) pasó realizando llamadas del sistema para el kernel en nombre del programa es mayor para **C** que para **Python3** (Al menos en la configuración en la cual los tests fueron ejecutados).
 
-### Analisis
-
-* La complegidad de búsqueda de un paciente 0 es O(1)
-* Si se cambiase la estructura del arbol de personas, según se propone en el enunciado, pasando de utilizar una lista ligada a utilizar un arreglo, donde además del id, se conoce el índice en el cual se encuentra un nodo
