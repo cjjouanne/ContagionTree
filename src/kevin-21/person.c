@@ -100,7 +100,7 @@ void recursive_inform(Person *person, int depth, FILE* output_file)
 {
     for (int i = 0; i < depth; i++)
     {
-        fprintf(output_file, "\t");
+        fprintf(output_file, "    ");
     }
     fprintf(output_file, "%i:%i\n", person -> id, person->state);
     Person *curr = person -> head;
