@@ -1,5 +1,3 @@
-*.txt
-!tests/test.txt
 python/__pycache__/
 obj/
 ./vscode
