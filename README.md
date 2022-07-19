@@ -52,8 +52,6 @@ En estos se declaran y definen la **struct** `world`, y las siguinetes funciones
 
 ### Analisis
 
-> ⚠️ No se nada de complejidad, ni cálculos de complejidad. Puede estar todo malo.
-
 A continuación, se muestra la complejidad teórica de cada acción considerando el peor caso:
 * La complejidad de búsqueda de un paciente 0 es _O(1)_, muentras que en el peor de los casos es de _O(n)_ donde _n_ es el número de nodos del árbol.
   * **ADD_CONTACTS**: encontrar la persona a la cual se le añade un contacto tiene complejidad hasta _O(n)_. Añadir un elemento al final de una lista ligada tiene complejidad _O(1)_, al iterar sobre estacción, tenemos una complejidad de _O(n)_, por lo tanto, la complejidad total es _O(n)_.
